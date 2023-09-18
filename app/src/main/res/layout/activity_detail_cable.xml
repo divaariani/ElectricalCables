@@ -10,19 +10,19 @@
         android:id="@+id/title_cable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item Title"
+        android:text="@string/title"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#333333"
+        android:textColor="@color/navy"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="24dp"/>
 
     <ImageView
         android:id="@+id/image_cable"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         app:layout_constraintTop_toBottomOf="@id/title_cable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,75 +30,89 @@
         android:scaleType="centerCrop"
         android:src="@color/navy" />
 
+    <ImageView
+        android:id="@+id/icon_favorite"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/icon_favorite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/image_cable"
+        app:tint="@color/cream_700"/>
+
     <TextView
         android:id="@+id/benefit_cable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Benefits:"
+        android:text="@string/benefits"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#333333"
-        app:layout_constraintTop_toBottomOf="@id/image_cable"
+        app:layout_constraintTop_toBottomOf="@id/icon_favorite"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
     <TextView
         android:id="@+id/benefit_description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Benefit details go here."
+        android:text="@string/benefit_details"
         app:layout_constraintTop_toBottomOf="@id/benefit_cable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:textColor="#666666" />
 
     <TextView
         android:id="@+id/specification_cable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Specifications:"
+        android:text="@string/specifications"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#333333"
         app:layout_constraintTop_toBottomOf="@id/benefit_description"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
     <TextView
         android:id="@+id/specification_description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Specification details go here."
+        android:text="@string/specification_details"
         app:layout_constraintTop_toBottomOf="@id/specification_cable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:textColor="#666666" />
 
     <TextView
         android:id="@+id/construction_cable"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Construction:"
+        android:text="@string/constructions"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#333333"
         app:layout_constraintTop_toBottomOf="@id/specification_description"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp" />
     <TextView
         android:id="@+id/construction_description"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Construction details go here."
+        android:text="@string/construction_details"
         app:layout_constraintTop_toBottomOf="@id/construction_cable"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:textColor="#666666" />
 </androidx.constraintlayout.widget.ConstraintLayout>

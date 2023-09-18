@@ -18,16 +18,9 @@ class FavoriteFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(FavoriteViewModel::class.java)
-
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textFavorite
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
         return root
     }
 
