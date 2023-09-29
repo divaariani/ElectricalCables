@@ -12,5 +12,6 @@
     <string name="specification_details">Specification details here.</string>
     <string name="constructions">Constructions</string>
     <string name="construction_details">Construction details here.</string>
-    <string name="search">Search...</string>
+    <string name="search">Search</string>
+    <string name="cable_name">Cable Name...</string>
 </resources>

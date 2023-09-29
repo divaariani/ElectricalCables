@@ -6,10 +6,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.view.inputmethod.EditorInfo
+import androidx.lifecycle.ViewModelProvider
+import com.divaariani.electricalcables.data.Cable
 import com.divaariani.electricalcables.data.CableData
+import com.divaariani.electricalcables.data.CableRepository
 import com.divaariani.electricalcables.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -34,7 +40,37 @@ class HomeFragment : Fragment() {
         }
         listCable.adapter = adapter
 
+        val searchEditText: EditText = binding.searchEditText
+        val searchButton: Button = binding.searchButton
+        searchButton.setOnClickListener {
+            val query = searchEditText.text.toString()
+            performSearch(query)
+        }
+        searchEditText.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                val query = searchEditText.text.toString()
+                performSearch(query)
+                true
+            } else {
+                false
+            }
+        }
+
+        adapter.notifyDataSetChanged()
+        adapter.setOnItemClickCallback(object : CableAdapter.OnItemClickCallback {
+            override fun onItemClicked(data: Cable) {
+                val intent = Intent(requireContext(), DetailCableActivity::class.java)
+                intent.putExtra(DetailCableActivity.EXTRA_ID, data.id)
+                startActivity(intent)
+            }
+        })
+
         return root
+    }
+
+    private fun performSearch(query: String) {
+        val filteredCables = CableRepository().searchCables(query)
+        adapter.updateCables(filteredCables)
     }
 
     override fun onDestroyView() {

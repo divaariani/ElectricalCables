@@ -1,29 +1,9 @@
 package com.divaariani.electricalcables.ui.favorite
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.divaariani.electricalcables.data.Cable
 
-class FavoriteViewModel : ViewModel() {
-    private val _favoriteCable = MutableLiveData<List<Cable>>()
-    val favoriteCable: LiveData<List<Cable>> get() = _favoriteCable
+class FavoriteViewModel(application: Application): AndroidViewModel(application) {
 
-    init{
-        _favoriteCable.value = emptyList()
-    }
-
-    fun addFavoriteCable(cable: Cable){
-        val currentList = _favoriteCable.value ?: emptyList()
-        val updatedList = currentList.toMutableList()
-        updatedList.add(cable)
-        _favoriteCable.value = updatedList
-    }
-
-    fun removeFavoriteCable(cable: Cable){
-        val currentList = _favoriteCable.value ?: emptyList()
-        val updatedList = currentList.toMutableList()
-        updatedList.remove(cable)
-        _favoriteCable.value = updatedList
-    }
 }

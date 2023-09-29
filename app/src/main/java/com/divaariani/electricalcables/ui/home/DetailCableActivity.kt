@@ -2,31 +2,41 @@ package com.divaariani.electricalcables.ui.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.divaariani.electricalcables.R
 import com.divaariani.electricalcables.data.Cable
-import com.divaariani.electricalcables.ui.favorite.FavoriteViewModel
+import com.divaariani.electricalcables.databinding.ActivityDetailCableBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DetailCableActivity : AppCompatActivity() {
-    private var isFavorite = false
-    private lateinit var vmFavorite: FavoriteViewModel
+    companion object{
+        const val EXTRA_ID = "extra_id"
+    }
+
+    private lateinit var binding: ActivityDetailCableBinding
+    private lateinit var viewModel: DetailCableViewModel
     private var selectedCable: Cable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_detail_cable)
+        binding = ActivityDetailCableBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        selectedCable = intent.getParcelableExtra("selected_cable")
+        val id = intent.getIntExtra(EXTRA_ID, 0)
+        val bundle = Bundle()
+
+        viewModel = ViewModelProvider(this).get(DetailCableViewModel::class.java)
+        selectedCable = intent.getParcelableExtra(EXTRA_ID)
 
         if (selectedCable != null) {
-            val titleTextView = findViewById<TextView>(R.id.title_cable)
-            val imageImageView = findViewById<ImageView>(R.id.image_cable)
-            val benefitTextView = findViewById<TextView>(R.id.benefit_description)
-            val specificationTextView = findViewById<TextView>(R.id.specification_description)
-            val constructionTextView = findViewById<TextView>(R.id.construction_description)
+            val titleTextView = binding.titleCable
+            val imageImageView = binding.imageCable
+            val benefitTextView = binding.benefitDescription
+            val specificationTextView = binding.specificationDescription
+            val constructionTextView = binding.constructionDescription
 
             titleTextView.text = selectedCable?.name
             Glide.with(this)
@@ -37,29 +47,22 @@ class DetailCableActivity : AppCompatActivity() {
             constructionTextView.text = selectedCable?.construction
         }
 
-        vmFavorite = ViewModelProvider(this).get(FavoriteViewModel::class.java)
-        val iconFavorite = findViewById<ImageView>(R.id.icon_favorite)
-        updateFavoriteIcon()
-        iconFavorite.setOnClickListener {
-            isFavorite = !isFavorite
-            updateFavoriteIcon()
-
-            if (selectedCable != null) {
-                if (isFavorite) {
-                    vmFavorite.addFavoriteCable(selectedCable!!)
-                } else {
-                    vmFavorite.removeFavoriteCable(selectedCable!!)
-                }
+        var _isChecked = false
+        CoroutineScope(Dispatchers.IO).launch {
+            withContext(Dispatchers.Main){
             }
         }
-    }
 
-    private fun updateFavoriteIcon() {
-        val iconFavorite = findViewById<ImageView>(R.id.icon_favorite)
-        if (isFavorite) {
-            iconFavorite.setImageResource(R.drawable.icon_favorite)
-        } else {
-            iconFavorite.setImageResource(R.drawable.icon_unfavorite)
+        binding.toggleFavorite.setOnClickListener {
+            val currentCable = selectedCable
+
+            _isChecked = !_isChecked
+            if (_isChecked && currentCable != null) {
+                // LOGIC HERE
+            } else {
+                // LOGIC HERE
+            }
+            binding.toggleFavorite.isChecked = _isChecked
         }
     }
 }
