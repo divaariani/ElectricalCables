@@ -36,5 +36,30 @@ class DetailCableActivity : AppCompatActivity() {
             specificationTextView.text = selectedCable?.specification
             constructionTextView.text = selectedCable?.construction
         }
+
+        vmFavorite = ViewModelProvider(this).get(FavoriteViewModel::class.java)
+        val iconFavorite = findViewById<ImageView>(R.id.icon_favorite)
+        updateFavoriteIcon()
+        iconFavorite.setOnClickListener {
+            isFavorite = !isFavorite
+            updateFavoriteIcon()
+
+            if (selectedCable != null) {
+                if (isFavorite) {
+                    vmFavorite.addFavoriteCable(selectedCable!!)
+                } else {
+                    vmFavorite.removeFavoriteCable(selectedCable!!)
+                }
+            }
+        }
+    }
+
+    private fun updateFavoriteIcon() {
+        val iconFavorite = findViewById<ImageView>(R.id.icon_favorite)
+        if (isFavorite) {
+            iconFavorite.setImageResource(R.drawable.icon_favorite)
+        } else {
+            iconFavorite.setImageResource(R.drawable.icon_unfavorite)
+        }
     }
 }

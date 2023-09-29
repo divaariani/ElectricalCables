@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Electrical Cables</string>
+    <string name="title_home">Home</string>
+    <string name="title_favorite">Favorite</string>
+    <string name="title_profile">Profile</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_cable">Cable Title</string>
+    <string name="title">Title</string>
+    <string name="benefits">Benefits</string>
+    <string name="benefit_details">Benefit details here.</string>
+    <string name="specifications">Specifications</string>
+    <string name="specification_details">Specification details here.</string>
+    <string name="constructions">Constructions</string>
+    <string name="construction_details">Construction details here.</string>
+    <string name="search">Search...</string>
+</resources>
