@@ -11,7 +11,7 @@ import com.divaariani.electricalcables.R
 import com.divaariani.electricalcables.data.Cable
 
 class FavoriteAdapter(
-    private var cableList: List<Cable>,
+    private var cableFavoriteList: List<FavoriteCable>,
     private val onItemClick: (Cable) -> Unit
 ) : RecyclerView.Adapter<FavoriteAdapter.CableViewHolder>() {
 
@@ -37,9 +37,7 @@ class FavoriteAdapter(
     }
 
     override fun onBindViewHolder(holder: CableViewHolder, position: Int) {
-        val currentItem = cableList[position]
-        holder.bind(currentItem)
     }
 
-    override fun getItemCount() = cableList.size
+    override fun getItemCount() = cableFavoriteList.size
 }

@@ -4,15 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.divaariani.electricalcables.R
 import com.divaariani.electricalcables.data.Cable
-import com.divaariani.electricalcables.ui.favorite.FavoriteViewModel
 
 class DetailCableActivity : AppCompatActivity() {
-    private var isFavorite = false
-    private lateinit var vmFavorite: FavoriteViewModel
     private var selectedCable: Cable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
