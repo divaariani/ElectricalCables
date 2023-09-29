@@ -21,10 +21,6 @@ class FavoriteFragment : Fragment() {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         val root = binding.root
 
-        val recyclerView = binding.rvFavorite
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = adapter
-
         return root
     }
 
